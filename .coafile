@@ -1,0 +1,4 @@
+[cli]
+bears = PEP8Bear,PyUnusedCodeBear,SpaceConsistencyBear
+files = Board.py,Bomberman.py,Bomb.py,Bricks.py,Config.py,Enemy.py,Getch.py,Main.py,Person.py,Walls.py
+use_spaces = True
