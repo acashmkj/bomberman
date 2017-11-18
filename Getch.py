@@ -11,10 +11,11 @@ class _Getch:
     """Gets a single character from standard input.  Does not echo to the screen."""
 
     def __init__(self):
-        try:
-            self.impl = _GetchWindows()
-        except ImportError:
-            self.impl = _GetchUnix()
+        self.impl = _GetchUnix()
+        # try:
+            # self.impl = _GetchWindows()
+        # except ImportError:
+            # self.impl = _GetchUnix()
 
     def __call__(self):
         return self.impl()
@@ -59,31 +60,31 @@ class _GetchUnix:
         ''' garbage '''
 
 
-class _GetchWindows:
-    """Fetch a character using the Microsoft Visual C Runtime."""
-
-    def __init__(self):
-        import msvcrt
-
-    def __call__(self):
-        import msvcrt
-        import time
-
-        # Delay timeout to match UNIX behaviour
-        time.sleep(1)
-
-        # Check if there is a character waiting, otherwise this would block
-        if msvcrt.kbhit():
-            return msvcrt.getch()
-
-        else:
-            return
-
-    def nothing(self):
-        ''' does nothing '''
-
-    def nothingagain(self):
-        ''' knows nothing '''
+# class _GetchWindows:
+#     """Fetch a character using the Microsoft Visual C Runtime."""
+#
+#     def __init__(self):
+#         import msvcrt
+#
+#     def __call__(self):
+#         import msvcrt
+#         import time
+#
+#         # Delay timeout to match UNIX behaviour
+#         time.sleep(1)
+#
+#         # Check if there is a character waiting, otherwise this would block
+#         if msvcrt.kbhit():
+#             return msvcrt.getch()
+#
+#         else:
+#             return
+#
+#     def nothing(self):
+#         ''' does nothing '''
+#
+#     def nothingagain(self):
+#         ''' knows nothing '''
 
 
 GETCH = _Getch()
