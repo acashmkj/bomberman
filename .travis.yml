@@ -8,3 +8,6 @@ python:
 install:
   - pip3 install termcolor
   - pip3 install coala-bears
+
+script:
+  - coala --files *.py --bears PEP8Bear,PyUnusedCodeBear,SpaceConsistencyBear
